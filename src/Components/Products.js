@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchProducts } from './Redux/productActions/ProductActions';
 
     
  const Products = () => {
       const [products, setProducts] = useState([]);
-
-      const getProducts = async () => {
-        const response = await fetch('https://fakestoreapi.com/products')
-        const data = await response.json()
-        setProducts(data);
-      }
+      const dispatch = useDispatch()
+      // const getProducts = async () => {
+      //   const response = await fetch('https://fakestoreapi.com/products')
+      //   const data = await response.json()
+      //   setProducts(data);
+      // }
 
       useEffect(() => {
-        getProducts()
+        // getProducts()
+        dispatch(fetchProducts)
       }, [])
   return (
     <div>
@@ -39,7 +42,7 @@ import { Link } from 'react-router-dom';
               }
             </div>
           ) : (
-            <p>Add Products</p>
+            <img src="https://cdn.pixabay.com/animation/2023/04/16/16/41/16-41-15-249_512.gif" />
           )}
         </div>
       </div>

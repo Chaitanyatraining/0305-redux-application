@@ -16,3 +16,13 @@ export const removeFromCart = (id) => {
         payload: id
     }
 }
+
+// synchronous action creators 
+// Asynchronous action creators
+
+export const fetchProducts = async() => {
+    const response = await fetch('https://fakestoreapi.com/products')
+    const data = await response.json()
+
+    return {type: ACTION_TYPE.FETCH_PRODUCTS, payload: data }
+}
