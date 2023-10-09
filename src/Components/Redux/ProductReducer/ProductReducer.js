@@ -19,6 +19,9 @@ export const productReducer = (state = initialState, action) => {
                 // 2!==3 true
                 // 3!==3 false
                 return {...state, cartData:filterProducts}
+             
+        case ACTION_TYPE.FETCH_PRODUCTS:
+            return {...state, products: action.payload}
         default:
             return state
     }
